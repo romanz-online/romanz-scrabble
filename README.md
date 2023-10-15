@@ -2,7 +2,7 @@
 
 This is an online recreation of Scrabble, hosted on my website here: https://www.romanzinoviev.com/scrabble
 
-I attempted to recreate Scrabble's rules as closely as possible, so there should be few to no discrepancies there. There are many other versions of Scrabble on many websites, but none of the ones I've found have been particularly well-designed and they all required some form of website account to begin playing. I found this meaningless and tedious, so I decided to make my own version which generates a username for each player automatically and stores it as a cookie so they can return to games without losing progress.
+I attempted to recreate Scrabble's rules as closely as possible, so there should be few to no discrepancies there. There are many other versions of Scrabble on many websites, but none of the ones I've found have been particularly well-designed and they all required some form of account to even begin playing. I found this meaningless and tedious, so I decided to make my own version which generates a username for each player automatically and stores it as a cookie so they can return to games without losing progress.
 
 # running the website
 
