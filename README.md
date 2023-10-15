@@ -6,4 +6,6 @@ I attempted to recreate Scrabble's rules as closely as possible, so there should
 
 # running the website
 
-The code in this repository may function on its own since it contains all of the code relevant to my Scrabble project, but there are many hooks in server.js left unused/unanswered because that code is shared between Scrabble and the rest of the website, so there may be unexpected behavior. One need only install all of the dependencies listed in package.json and then run the project with "npm start" at which point you can find the website at http://localhost:8080/scrabble
+The code in this repository may function on its own since it contains all of the code relevant to my Scrabble project, but there are many hooks in server.js left unused/unanswered because that code is shared between Scrabble and the rest of the website, so there may be unexpected behavior. One need only install all of the dependencies listed in package.json and then run the project with "npm start"
+
+The website will be hosted at http://localhost:8080/scrabble
