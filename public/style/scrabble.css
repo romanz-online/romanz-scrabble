@@ -141,7 +141,7 @@ body {
 
     padding: 0;
     margin-top: calc(1rem + 16px);
-    
+
     background-color: transparent;
     border: none;
     outline: none;
@@ -167,7 +167,7 @@ body {
 
     width: 6rem;
     height: 6rem;
-    
+
     background-image: url(../images/join_game.svg);
     background-size: 100%;
     background-position: center;
@@ -177,4 +177,21 @@ body {
     animation: 1600ms pulsate_large infinite alternate ease-in-out;
 
     cursor: pointer;
+}
+
+#github_link {
+    position: absolute;
+    right: 24px;
+    bottom: 24px;
+
+    color: whitesmoke;
+    font-size: 1rem;
+    font-weight: lighter;
+    text-align: right;
+    font-style: italic;
+    text-decoration: none;
+}
+
+#github_link:hover {
+    filter: brightness(1.1);
 }
