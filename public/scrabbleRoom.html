@@ -1,0 +1,144 @@
+<html>
+
+<head>
+    <title>Scrabble</title>
+
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+    <link rel="manifest" href="favicon/site.webmanifest">
+    <link rel="mask-icon" href="favicon/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+
+    <link rel="stylesheet" type="text/css"
+        href="https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap">
+    <link rel="stylesheet" type="text/css"
+        href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&display=swap">
+
+    <link rel="stylesheet" href="style/scrabbleRoom.css">
+    <link rel="stylesheet" href="style/scrabbleSidebar.css">
+    <link rel="stylesheet" href="style/scrabbleChat.css">
+    <link rel="stylesheet" href="style/scrabbleTooltip.css">
+    <link rel="stylesheet" href="style/scrabbleEndGame.css">
+
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="scrabbleEndgame.js"></script>
+    <script src="scrabbleRoom.js"></script>
+</head>
+
+<body>
+    <canvas id="canvas"></canvas>
+
+    <div id="wildcard_prompt" class="tile">
+        <form id="wildcard_form">
+            <input id="wildcard_input" type="text" maxlength="1" autocomplete="off" spellcheck="false"
+                placeholder="*" />
+        </form>
+    </div>
+
+    <div id="wildcard_overlay"></div>
+
+    <div id="loading_overlay">
+        <div class="dot-animation"></div>
+        <div id="loading_message">
+            If the page is taking too long to load or something doesn't seem right, try refreshing.
+        </div>
+    </div>
+
+    <div id="main_container" class="column_container" style="justify-content: center;"></div>
+
+    <div id="sidebar">
+        <div id="sidebar_buttons">
+            <div id="sidebar_toggle" class="sidebar_button tile open"></div>
+            <div id="sidebar_chat" class="sidebar_button tile sidebar_content_button"></div>
+            <div id="sidebar_help" class="sidebar_button tile sidebar_content_button"></div>
+            <div id="sidebar_bug" class="sidebar_button tile sidebar_content_button"></div>
+            <div id="sidebar_home" class="sidebar_button tile" title="Exit Room (you can come back)"></div>
+        </div>
+
+        <div id="sidebar_contents">
+            <div id="chat_container" class="sidebar_contents_container">
+                <div id="chat_contents">
+                    <div id="chat_empty_space"></div>
+                </div>
+                <form id="chat_form">
+                    <input id="chat_input" type="text" autocomplete="off" placeholder="Send a message..." />
+                </form>
+            </div>
+
+            <div id="help_container" class="sidebar_contents_container">
+                <h3>How to Play:</h3>
+                Players take turns in the order in which they joined. On your turn, you can do one of the following:
+                <div style="padding: 10px;">
+                    <b>[ SUBMIT ]</b> Form a word on the board using your letter tiles. The word must connect to an
+                    existing word on the board, either vertically or horizontally.
+                    <br>
+                    <br><b>[ SWAP ]</b> Exchange some or all of your tiles for new ones. Click on your playable tiles to
+                    mark them for swapping, then click the "Swap" button. This ends your turn.
+                    <br>
+                    <br><b>[ PASS ]</b> End your turn without affecting the game state.
+                </div>
+                After each turn, playable tiles in your rack will replenish back to seven by drawing from the pool
+                of remaining tiles.
+                <br>
+                <div class="help_contents_dividing_line"></div>
+                <h3>Scoring:</h3>
+                Each letter tile has a point value, and the total score for a word is calculated by adding
+                the point values of the tiles used. Some spaces on the board can multiply the word or letter
+                score but, once those spaces are used, they no longer have any bonus effects.
+                <br>
+                <div class="help_contents_dividing_line"></div>
+                <h3>Game End:</h3>
+                The game ends when all letter tiles have been drawn and one player uses their last tile,
+                or when all players pass their turn in a row, signifying that there are no more valid words to play.
+                <br>
+                <div class="help_contents_dividing_line"></div>
+                <h3>Winning:</h3>
+                The player with the highest score at the end of the game wins. Points are subtracted for
+                any unplayed tiles left in a player's rack and, if a player used all of their tiles, the sum of those
+                unplayed tiles is added to their score. The player with the most points wins. In the case of a tie, the
+                player with the most points before adding or deducting unplayed letters wins and unplayed letters won't
+                be scored at all.
+            </div>
+
+            <div id="bug_container" class="sidebar_contents_container">
+                <h3>Bug Reporting:</h3>
+                <div style="margin-bottom: 24px;">
+                    Thank you for taking the time out of your day to play Scrabble on my website!
+                    This is a solo project done entirely for fun but I hope to make it as good of a product as I can, so
+                    please let me know how I can improve it.
+                    <br><br>
+                    For interest in the code itself, you can find the source
+                    <a style="font-style: italic;"
+                        href="https://github.com/romanz-online/romanz-scrabble">on the headless GitHub</a>.
+                </div>
+                <form id="bug_form">
+                    <textarea id="bug_message" type="text" autocomplete="off" spellcheck="false"
+                        placeholder="Describe your bug or provide feedback"></textarea>
+                    <input id="bug_submit" type="submit" value="SEND" />
+                </form>
+            </div>
+        </div>
+
+        <div id="sidebar_info">
+            <div style="display: flex; flex-direction: row; gap: 4px;">
+                <div class="sidebar_info_label">Room </div>
+                <div id="room_code"></div>
+            </div>
+
+            <div style="display: flex; flex-direction: row; gap: 4px;">
+                <div class="sidebar_info_label">Invite:</div>
+                <input id="invite_url" type="text" readonly></input>
+                <div id="copy_symbol" title="Copy"></div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

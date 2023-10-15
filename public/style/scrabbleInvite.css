@@ -1,0 +1,100 @@
+body {
+    width: 90%;
+    height: 90%;
+    overflow: hidden;
+
+    color: whitesmoke;
+    font-family: 'Montserrat', sans-serif;
+    user-select: none;
+    font-size: 1.5rem;
+    font-weight: bold;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: left;
+
+    padding: 24px;
+
+    background: linear-gradient(to top, #222222, #333333);
+}
+
+#login_message {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    text-align: right;
+
+    position: absolute;
+    right: 24px;
+    top: 24px;
+
+    font-size: 1rem;
+    font-weight: lighter;
+}
+
+#logged_in_as {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+#join_scrabble_game {
+    width: fit-content;
+    height: fit-content;
+
+    padding: 24px;
+    margin: 12px;
+
+    border: none;
+    border-radius: 4px;
+
+    background-color: #222222;
+
+    color: whitesmoke;
+    font-size: 1rem;
+    font-weight: bold;
+    letter-spacing: 0.1rem;
+
+    cursor: pointer;
+}
+
+#join_scrabble_game:not([disabled]):hover {
+    filter: brightness(1.05);
+}
+
+#join_scrabble_game[disabled] {
+    cursor: auto;
+    color: gray;
+    background-color: #282828;
+}
+
+#home_button {
+    z-index: 6;
+
+    color: whitesmoke;
+
+    width: 48px;
+    height: 48px;
+
+    margin-left: auto;
+    margin-top: 6px;
+
+    cursor: pointer;
+
+    border-radius: 50%;
+
+    background-color: #222222;
+    background-image: url(../images/door.svg);
+    background-size: 60%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+#home_button:hover {
+    filter: brightness(1.1);
+}
+
+#error_message {
+    color: tomato;
+}
