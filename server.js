@@ -53,7 +53,7 @@ const pool = new Pool(dbConfig);
 const queryHandlerInstance = new QueryHandler('game', pool);
 
 const gameExpirationDays = 2;
-cron.schedule('0 0 * * *', () => {
+cron.schedule('0 * * * *', () => {
     deleteOldRecords();
 });
 
