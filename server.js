@@ -34,9 +34,17 @@ app.use('/socket.io', express.static(__dirname + '/node_modules/socket.io/client
 
 const dictionary = new Typo('en_US');
 
-const dbConfig = {
+const dbConfig = process.env.DATABASE_URL ? {
     connectionString: process.env.DATABASE_URL,
     ssl: { rejectUnauthorized: false },
+    connectionTimeoutMillis: 5000,
+    idleTimeoutMillis: 10000
+} : {
+    user: 'postgres',
+    host: 'localhost',
+    database: 'scrabble',
+    password: 'admin',
+    port: 5432,
     connectionTimeoutMillis: 5000,
     idleTimeoutMillis: 10000
 };
