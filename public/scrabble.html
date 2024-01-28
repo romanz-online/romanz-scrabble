@@ -1,0 +1,73 @@
+<html>
+
+<head>
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+    <link rel="manifest" href="favicon/site.webmanifest">
+    <link rel="mask-icon" href="favicon/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+
+    <!-- Open Graph Protocol meta tags -->
+    <meta property="og:title" content="Scrabble">
+    <meta property="og:description"
+        content="Come play or start a game on this sleek, easily accessible version of online Scrabble, hosted on Roman Zinoviev's website!">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://romanzinoviev.com/scrabble">
+    <!-- <meta property="og:image" content="https://romanzinoviev.com/scrabble_embed_picture.png"> -->
+
+    <link rel="stylesheet" type="text/css"
+        href="https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap">
+    <link rel="stylesheet" type="text/css"
+        href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&display=swap">
+
+    <link rel="stylesheet" href="style/scrabble.css">
+
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="scrabble.js"></script>
+</head>
+
+<body>
+    <div id="login_message">
+        <div id="logged_in_as"></div>
+        <div>Make sure to enable cookies so you don't lose progress</div>
+    </div>
+    <a id="github_link"
+        href="https://github.com/romanz-online/romanz-scrabble">Source</a>
+    <div id="menu_grid">
+        <span class="centered_row">JOIN GAME</span>
+        <div class="centered_row">
+            <div style="display: flex; flex-direction: column; gap: 12px;">
+                <form id="room_code_form">
+                    <input id="room_code_input" type="text" maxlength="5" autocomplete="off" spellcheck="false"
+                        placeholder="ROOM CODE" />
+                </form>
+                <div id="error_message">*****</div>
+            </div>
+            <div id="join_scrabble_game" class="centered_row"></div>
+        </div>
+        <span class="centered_row">CREATE GAME</span>
+        <div id="choose_num_players" class="centered_row">
+            <div class="grid_column" style="gap: 8px;">
+                <button class="create_scrabble_game_with_player_count" value="1">1</button>
+                <div class="create_game_tooltip">1 player</div>
+            </div>
+            <div class="grid_column" style="gap: 8px;">
+                <button class="create_scrabble_game_with_player_count" value="2">2</button>
+                <div class="create_game_tooltip">2 players</div>
+            </div>
+            <div class="grid_column" style="gap: 8px;">
+                <button class="create_scrabble_game_with_player_count" value="3">3</button>
+                <div class="create_game_tooltip">3 players</div>
+            </div>
+            <div class="grid_column" style="gap: 8px;">
+                <button class="create_scrabble_game_with_player_count" value="4">4</button>
+                <div class="create_game_tooltip">4 players</div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

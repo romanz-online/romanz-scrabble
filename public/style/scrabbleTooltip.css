@@ -1,0 +1,20 @@
+.ui-tooltip {
+    position: absolute;
+    z-index: 9999;
+
+    padding: 6px;
+
+    border-radius: 0 4px 0 0;
+
+    background-color: whitesmoke;
+
+    color: #222222;
+    font-family: 'Montserrat';
+    font-size: 0.8rem;
+    line-height: 20px;
+    white-space: pre-wrap;
+}
+
+.ui-helper-hidden-accessible {
+    display: none;
+}
